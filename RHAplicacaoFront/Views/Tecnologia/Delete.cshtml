@@ -1,0 +1,51 @@
+﻿@model RHAplicacaoFront.Models.Tecnologia
+
+@{
+    ViewBag.Title = "Excluir Tecnologia";
+}
+
+<br />
+<h2>Excluir Tecnologia</h2>
+<br />
+
+<h3>Deseja realmente excluir esse registro?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TecnologiaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TecnologiaID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <button type="submit" value="Excluir" class="btn btn-danger btn-sm">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                Excluir
+            </button>
+        }
+    </div>
+</div>
+<p>
+    <a href="@Url.Action("Index", "Tecnologia")" class="btn btn-primary btn-xs">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        Voltar
+    </a>
+
+</p>

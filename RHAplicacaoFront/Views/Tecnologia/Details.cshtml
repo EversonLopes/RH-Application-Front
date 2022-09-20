@@ -1,0 +1,28 @@
+﻿@model RHAplicacaoFront.Models.Tecnologia
+
+@{
+    ViewBag.Title = "Detalhes da Tecnologia";
+}
+
+<h2>Detalhes da Tecnologia</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TecnologiaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TecnologiaID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+    </dl>
+</div>

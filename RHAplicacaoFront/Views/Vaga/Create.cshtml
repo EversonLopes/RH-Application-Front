@@ -1,0 +1,88 @@
+﻿@model RHAplicacaoFront.Models.Vaga
+
+@{
+    ViewBag.Title = "Cadastrar Vaga";
+}
+
+<br />
+<h2>Cadastrar Vaga</h2>
+<br />
+
+
+@using (Html.BeginForm("Create", "Vaga", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescricaoVaga, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DescricaoVaga, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DescricaoVaga, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VagasTecnologias, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @if (Model.CheckBoxItems.Count() > 0 && Model.VagasTecnologias != null)
+                {
+                    <table>
+                        @for (int i = 0; i < Model.CheckBoxItems.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    <span> @Html.CheckBoxFor(r => Model.CheckBoxItems[i].Checked)</span>
+                                    <span> @Model.CheckBoxItems[i].ItemName</span>
+                                    @Html.HiddenFor(h => @Model.CheckBoxItems[i].Id)
+                                    @Html.HiddenFor(h => @Model.CheckBoxItems[i].ItemName)
+                                </td>
+                            </tr>
+
+                        }
+                        @Html.ValidationMessageFor(model => model.VagasTecnologias, "", new { @class = "text-danger" })
+                    </table>
+                }
+                else
+                {
+                    <span class="text-danger">Por favor, cadastre uma tecnologia!</span>
+                }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (Model.CheckBoxItems.Count() > 0 && Model.VagasTecnologias != null)
+                {
+                    <button type="submit" value="Create" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                        Salvar
+                    </button>
+                }
+                else
+                {
+                    <button type="submit" value="Create" class="btn btn-success btn-sm" disabled>
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                        Salvar
+                    </button>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index", "Vaga")" class="btn btn-primary btn-xs">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        Voltar
+    </a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
