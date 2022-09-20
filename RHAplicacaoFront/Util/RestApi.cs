@@ -32,7 +32,7 @@ namespace RHAplicacaoFront.Util
         public string EditarVaga = "Vagas/{0}";
         public string DeletarVaga = "Vagas/{0}";
 
-        //Método que defini a uri, que é informada no arquivo web.config e o tipo de texto que será transferido
+        //Método que defini a URI, que é informada no arquivo web.config e o tipo de texto que será transferido
         public HttpClient BaseUrl()
         {
             HttpClient client = new HttpClient();
